@@ -18,7 +18,6 @@ export class App extends Component {
   };
 
   createUser = data => {
-    console.log(data.name);
     if (
       this.state.contacts.find(
         contact => contact.name.toLowerCase() === data.name.toLowerCase()
@@ -29,7 +28,7 @@ export class App extends Component {
     }
 
     const newUser = { ...data, id: nanoid(10) };
-    console.log(newUser);
+
     this.setState(prevState => {
       return { contacts: [newUser, ...prevState.contacts] };
     });
@@ -45,6 +44,11 @@ export class App extends Component {
       contact.name.toLowerCase().includes(normalized)
     );
   };
+  onDeleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
   render() {
     return (
       <div
@@ -55,7 +59,10 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <FormRegistation createUser={this.createUser} />
         <Filter value={this.state.filter} onChange={this.handleFilterChange} />
-        <Contacts contacts={this.getFilterContact()} />
+        <Contacts
+          contacts={this.getFilterContact()}
+          onDeleteContact={this.onDeleteContact}
+        />
       </div>
     );
   }

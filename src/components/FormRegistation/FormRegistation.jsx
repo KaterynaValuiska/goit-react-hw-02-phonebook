@@ -12,7 +12,6 @@ export class FormRegistation extends Component {
   };
   handleSubmit = evt => {
     evt.preventDefault();
-    console.log(this.state);
 
     this.props.createUser({
       name: this.state.name,

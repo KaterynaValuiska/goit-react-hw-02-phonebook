@@ -1,7 +1,4 @@
-// import { Children } from 'react';
-// import { Component } from 'react';
-
-export function Contacts({ contacts }) {
+export function Contacts({ contacts, onDeleteContact }) {
   return (
     <div>
       <h2>Contacts</h2>
@@ -9,25 +6,16 @@ export function Contacts({ contacts }) {
         {contacts.map(({ name, number, id }) => (
           <li key={id}>
             {name}: {number}
+            {'  '}
+            <button
+              type="button"
+              className="btn-close"
+              aria-label="Close"
+              onClick={() => onDeleteContact(id)}
+            ></button>
           </li>
         ))}
       </ul>
     </div>
   );
 }
-
-// export class Contacts extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <h2>Contacts</h2>
-//         <ul>
-//           {this.props.contacts.map(contact => {
-//             <li>{contact}</li>;
-//           })}
-//           {/* {this.props.Children} */}
-//         </ul>
-//       </div>
-//     );
-//   }
-// }
