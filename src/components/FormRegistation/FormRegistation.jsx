@@ -13,6 +13,7 @@ export class FormRegistation extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     console.log(this.state);
+
     this.props.createUser({
       name: this.state.name,
       number: this.state.number,
@@ -33,7 +34,7 @@ export class FormRegistation extends Component {
               name="name"
               value={this.state.name}
               onChange={this.handleInputChange}
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
               aria-describedby="emailHelp"
@@ -49,7 +50,7 @@ export class FormRegistation extends Component {
               name="number"
               value={this.state.number}
               onChange={this.handleInputChange}
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
               aria-describedby="emailHelp"
