@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const { Component } = require('react');
 
 export class FormRegistation extends Component {
@@ -64,3 +65,15 @@ export class FormRegistation extends Component {
     );
   }
 }
+
+FormRegistation.propTypes = {
+  props: PropTypes.objectOf(
+    PropTypes.shape({
+      state: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+      handleInputChange: PropTypes.func.isRequired,
+      handleSubmit: PropTypes.func.isRequired,
+      reset: PropTypes.func.isRequired,
+    }).isRequired
+  ),
+  createUser: PropTypes.func.isRequired,
+};
