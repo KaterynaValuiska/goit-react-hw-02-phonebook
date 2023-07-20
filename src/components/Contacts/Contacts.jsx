@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 export function Contacts({ contacts, onDeleteContact }) {
   return (
     <div>
@@ -19,3 +20,8 @@ export function Contacts({ contacts, onDeleteContact }) {
     </div>
   );
 }
+
+Contacts.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
+};
